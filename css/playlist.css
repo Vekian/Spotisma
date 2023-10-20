@@ -1,0 +1,124 @@
+ html{
+  height: 100%;
+  width: 100%;
+  background-color: #021631;
+ }
+
+ body {
+  background-color: #021631 !important;
+  height: 100%;
+ }
+
+
+ 
+ /* Style pour les playlists */
+.playlist-block {
+    width : 100%;
+    
+    background-color: #021631;
+    border: 2px solid #ffc107;
+    padding: 2px;
+    border-radius: 0% 0% 5% 0%;
+    overflow : scroll;
+}
+
+
+.playlistTitle {
+     font-size: 35px;
+     display: flex;
+     justify-content: center;
+     color: white;
+     border-bottom: 1px solid #ffc107;
+     padding: 2px;
+}
+
+.newPlaylist {
+    font-size: 20px;
+     display: flex;
+     justify-content: center;
+     color: white;
+     max-height:100%;
+overflow:scroll;
+}
+
+.playlist-item {
+    margin-top: 15px;
+  }
+  
+  .playlist-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+  }
+  
+  .playlist-title i {
+    margin-left: 5px;
+  }
+
+
+  /* Style pour la liste des chansons */
+  #playlist-songs- {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 5px;
+  }
+  
+  .listMusic {
+    padding : 2px;
+    font-size: 16px;
+    list-style-type: none;
+  }
+  
+  /* Style pour le bouton de suppression */
+  #trashBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color : grey;
+  }
+  
+  #trashBtn:hover {
+    color: #cc0000;
+  }
+
+  .fa-solid {
+    margin-right: 0px;
+  }
+
+  .createBtn {
+    margin : 5px;
+  }
+
+  #musicIcon {
+    color: white;
+    margin-left: 10px;
+  }
+
+  .backgroundColor {
+    background-color: #021631;
+  }
+
+  #navColor {
+    background-color: #000813;
+  }
+
+  #searchInput{
+    margin-left: 5px;
+  }
+
+  #searchValue {
+    border-radius: 10px;
+  }
+   .navbar-brand {
+    color: white;
+  }
+
+
