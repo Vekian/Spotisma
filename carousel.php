@@ -30,12 +30,8 @@ echo '<script> var songs = ' . $jsonAnswer . '; </script>'
 
 <script>
     <?php require_once("js/search.js");?>
-    window.addEventListener("resize", function() {
-        location.reload();
-        height = window.innerHeight;
-        playlistBlock = document.getElementsByClassName("playlist-block");
-        playlistBlock[0].style.height = (height - 50) + "px";
-    });
+
+    
     generateCarouselContent(songs);
     let songId = "";
     document.addEventListener("DOMContentLoaded", function() {

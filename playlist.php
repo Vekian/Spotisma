@@ -23,5 +23,9 @@
     echo '</div></div>
     </nav>';
 ?>
-
+<script>
+heightWindow = window.innerHeight;
+        playlistBlock = document.getElementsByClassName("playlist-block");
+        playlistBlock[0].style.height = (heightWindow - 50) + "px";
+</script>
 
