@@ -1,7 +1,7 @@
-<?php 
+<?php
 session_start();
 require_once('config/connection.php');
-if(isset($_SESSION['LOGGED_USER'])) {
+if (isset($_SESSION['LOGGED_USER'])) {
     $stmtAdmin = $baseSpotisma->query('SELECT admin FROM users WHERE name = "' . $_SESSION['LOGGED_USER'] . '"');
     $user = $stmtAdmin->fetch(PDO::FETCH_ASSOC);
     $idAdmin =  $user['admin'];
@@ -13,9 +13,9 @@ if(isset($_SESSION['LOGGED_USER'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotisma</title>
-    <link rel="stylesheet" href="css/playlist.css">
-    <link rel="stylesheet" href="css/carousel.css">
-    <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="public/css/playlist.css">
+    <link rel="stylesheet" href="public/css/carousel.css">
+    <link rel="stylesheet" href="public/css/player.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
@@ -37,28 +37,27 @@ if(isset($_SESSION['LOGGED_USER'])) {
             </form>
         </li>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-        <?php 
+        <?php
             if (!isset($_SESSION['LOGGED_USER'])) {
-                echo ('<li class="nav-item">
+                echo('<li class="nav-item">
                 <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Login
                 </button>
             </li>');
-            }
-            else {
+            } else {
                 echo('<li class="nav-item dropdown ml-5 " id="compte">
                 <a class="nav-link dropdown-toggle text-light me-auto" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ' . $_SESSION['LOGGED_USER'] . '
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">');
-                    if($idAdmin === 1) {
-                        echo('<li><a class="dropdown-item text-light" href="#" data-bs-toggle="modal" data-bs-target="#addSongModal">Ajouter musique</a></li>');
-                    };
+                if ($idAdmin === 1) {
+                    echo('<li><a class="dropdown-item text-light" href="#" data-bs-toggle="modal" data-bs-target="#addSongModal">Ajouter musique</a></li>');
+                };
                 echo('<li><a class="dropdown-item text-light" href="process/logout.php">Se déconnecter</a></h4></li></li>
                 </ul>
               </li>');
             }
-        ?>
+?>
       </ul>
     </div>
   </div>

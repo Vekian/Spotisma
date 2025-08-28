@@ -1,11 +1,10 @@
 <?php
-    try 
-    {
-        $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
-    }
-            
-    catch(Exception $e) 
-    {
-        die('Erreur : ' .$e->getMessage());
-    }
-?>
+
+$dbUser = getenv("MYSQL_USER");
+$dbPass = getenv("MYSQL_PASSWORD");
+$dbName = getenv("MYSQL_DATABASE");
+try {
+    $baseSpotisma = new PDO("mysql:host=mysql_music;dbname=$dbName;charset=utf8", $dbUser, $dbPass);
+} catch (Exception $e) {
+    die('Erreur : ' .$e->getMessage());
+}

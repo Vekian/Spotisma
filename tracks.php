@@ -124,4 +124,4 @@ if (response.ok) {
     playlistBlock.style.height = (height - 77) + 'px';
 </script>
 
-<script src="js/playlist.js"></script>
+<script src="public/js/playlist.js"></script>

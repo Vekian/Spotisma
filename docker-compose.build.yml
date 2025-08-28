@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_music
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./SQL:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - music_network
+    env_file:
+      - .env
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: vekian/music:latest
+    container_name: music
+    environment:
+      PHP_MEMORY_LIMIT: "512M"
+    ports:
+      - "9030:9020"
+    volumes:
+      - ./public:/var/www/music
+    networks:
+      - music_network
+    env_file:
+      - .env
+
+volumes:
+  db_data:
+
+networks:
+  music_network:
+    name: music_network

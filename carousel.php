@@ -2,8 +2,8 @@
 // Récupération des données des chansons depuis la base de données
 $stmt = $baseSpotisma->query('SELECT * FROM albums 
                                 JOIN songs ON albums.id = songs.id_album');
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $jsonAnswer = json_encode($results);
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$jsonAnswer = json_encode($results);
 
 echo '<script> var songs = ' . $jsonAnswer . '; </script>'
 ?>
@@ -29,7 +29,7 @@ echo '<script> var songs = ' . $jsonAnswer . '; </script>'
 
 
 <script>
-    <?php require_once("js/search.js");?>
+    <?php require_once("public/js/search.js");?>
 
     
     generateCarouselContent(songs);
@@ -83,14 +83,15 @@ echo '<script> var songs = ' . $jsonAnswer . '; </script>'
 </script>
 
 <?php
-    if(isset($_SESSION['LOGGED_USER'])) {
-    $nameUser = $_SESSION['LOGGED_USER'];
-    $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $nameUser . '"');
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    $idUser =  $user['id'];
+    if (isset($_SESSION['LOGGED_USER'])) {
+        $nameUser = $_SESSION['LOGGED_USER'];
+        $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $nameUser . '"');
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $idUser =  $user['id'];
 
-    $stmtPlaylists = $baseSpotisma->query('SELECT * FROM playlists WHERE id_user = "' . $idUser . '"');
-    $playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);}
+        $stmtPlaylists = $baseSpotisma->query('SELECT * FROM playlists WHERE id_user = "' . $idUser . '"');
+        $playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);
+    }
 ?>
 
 <div class="modal fade" id="addPlaylistModal" tabindex="-1" aria-labelledby="addPlaylistModalLabel" aria-hidden="true">
@@ -105,10 +106,10 @@ echo '<script> var songs = ' . $jsonAnswer . '; </script>'
                     <label for="namePlaylist">Choisissez votre playlist </label>
                     <select id="namePlaylist" class="bg-dark text-light" name="namePlaylist">
                     <?php
-                        foreach($playlistsData as $playlistData) {
+                        foreach ($playlistsData as $playlistData) {
                             echo('<option value="'. $playlistData['id'] . '"> ' . $playlistData["name"] .'</option>');
                         }
-                    ?>
+?>
                     </select>
                     <input type="hidden" name="idSong" id="idSongInput" value="">
                     <input type="hidden" name="idUser" value="<?php echo($idUser) ?>">

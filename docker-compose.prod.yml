@@ -1,0 +1,35 @@
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb_dev
+    restart: always
+    volumes:
+      - music_db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - music_network
+    env_file:
+      - .env
+
+  php:
+    image: vekian/music:latest
+    container_name: music
+    environment:
+      PHP_MEMORY_LIMIT: "512M"
+    ports:
+      - "9020:9000"
+    volumes:
+      - ./public:/var/www/music
+    networks:
+      - music_network
+    env_file:
+      - .env
+
+volumes:
+  music_db_data:
+
+networks:
+  music_network:
+    name: music_network
