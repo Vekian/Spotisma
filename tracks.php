@@ -1,13 +1,8 @@
 <?php
+include('../config/connection.php');
 // Vérifier si l'utilisateur est connecté avant de récupérer ses playlists
 if (isset($_SESSION['LOGGED_USER'])) {
     $userId = $_SESSION['LOGGED_USER'];
-
-    try {
-        $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
-    }
 
     // Récupérer l'ID de l'utilisateur connecté
     $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $userId . '"');

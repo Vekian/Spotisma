@@ -1,4 +1,6 @@
 <?php
+
+include('../config/connection.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifier si les données nécessaires sont présentes
     if (isset($_POST['playlist_id']) && isset($_POST['song_id'])) {
@@ -6,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $songId = $_POST['song_id'];
 
         try {
-            $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
             $baseSpotisma->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Supprimer la chanson de la playlist
@@ -31,4 +32,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: ../index.php');
     exit();
 }
-?>

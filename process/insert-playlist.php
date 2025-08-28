@@ -1,5 +1,8 @@
 <?php
+
 session_start();
+
+include('../config/connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $playlistName = $_POST['playlist-name'];
@@ -10,11 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../index.php');
         exit();
     }
-    
+
     try {
-        $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
         $baseSpotisma->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+
         // Récupérer l'ID de l'utilisateur à partir de la base de données
         $stmtUser = $baseSpotisma->prepare('SELECT id FROM users WHERE name = :nameUser');
         $stmtUser->bindParam(':nameUser', $nameUser);
@@ -38,4 +40,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: ../index.php');
     exit();
 }
-?>

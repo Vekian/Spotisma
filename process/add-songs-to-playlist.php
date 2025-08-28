@@ -1,4 +1,6 @@
 <?php
+
+include('../config/connection.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérifier si des chansons ont été sélectionnées
     if (isset($_POST['songs']) && is_array($_POST['songs'])) {
@@ -6,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $selectedSongs = $_POST['songs'];
 
         try {
-            $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
             $baseSpotisma->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Préparer une requête pour obtenir l'id de l'album de chaque chanson sélectionnée
@@ -44,4 +45,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: ../playlist.php');
     exit();
 }
-?>
