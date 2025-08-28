@@ -1,5 +1,5 @@
 <?php
-include('../config/connection.php');
+include('config/connection.php');
 // Vérifier si l'utilisateur est connecté avant de récupérer ses playlists
 if (isset($_SESSION['LOGGED_USER'])) {
     $userId = $_SESSION['LOGGED_USER'];
