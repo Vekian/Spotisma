@@ -6,8 +6,6 @@ services:
     volumes:
       - music_db_data:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
-    ports:
-      - "3306:3306"
     networks:
       - music_network
     env_file:
