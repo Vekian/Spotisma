@@ -19,7 +19,7 @@ services:
     environment:
       PHP_MEMORY_LIMIT: "512M"
     ports:
-      - "9020:9000"
+      - "9030:9000"
     volumes:
       - ./public:/var/www/music
     networks:
