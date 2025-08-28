@@ -1,7 +1,7 @@
 services:
   mariadb:
     image: mariadb:10.6
-    container_name: mariadb_dev
+    container_name: mysql_music
     restart: always
     volumes:
       - music_db_data:/var/lib/mysql
