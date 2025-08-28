@@ -120,7 +120,7 @@ if (response.ok) {
         });
     }
     let height = window.innerHeight;
-    const playlistBlock = document.querySelector('.playlist-block')
+    let playlistBlock = document.querySelector('.playlist-block')
     playlistBlock.style.height = (height - 77) + 'px';
 </script>
 
